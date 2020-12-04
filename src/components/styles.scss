@@ -1,0 +1,39 @@
+@import "../styles/_variables.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+input {
+  background-color: $background;
+}
+
+h1 {
+  font-family: $title-font;
+}
+p {
+  font-family: $text-font;
+  font-weight: 300;
+}
+main {
+  height: 90vh;
+  @include sm {
+    margin: 0 3.33%;
+  }
+  @include md {
+    margin: 0 6.33%;
+  }
+  @include xl {
+    margin: 0 16.33%;
+  }
+
+  .logo {
+    text-align: center;
+    font-size: 2.75rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+  }
+}

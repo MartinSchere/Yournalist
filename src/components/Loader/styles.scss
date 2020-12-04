@@ -1,0 +1,62 @@
+$loader-radius: 1.25em;
+
+.dot-collision {
+  position: relative;
+  width: $loader-radius;
+  height: $loader-radius;
+  border-radius: 50%;
+  background-color: $text-muted;
+  color: $text-muted;
+}
+.dot-collision::before,
+.dot-collision::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-collision::before {
+  left: -$loader-radius;
+  width: $loader-radius;
+  height: $loader-radius;
+  border-radius: 50%;
+  background-color: $text-muted;
+  color: $text-muted;
+  animation: dotCollisionBefore 2s infinite ease-in;
+}
+
+.dot-collision::after {
+  left: $loader-radius;
+  width: $loader-radius;
+  height: $loader-radius;
+  border-radius: 50%;
+  background-color: $text-muted;
+  color: $text-muted;
+  animation: dotCollisionAfter 2s infinite ease-in;
+  animation-delay: 1s;
+}
+
+@keyframes dotCollisionBefore {
+  0%,
+  50%,
+  75%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-$loader-radius * 1.5);
+  }
+}
+
+@keyframes dotCollisionAfter {
+  0%,
+  50%,
+  75%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX($loader-radius * 1.5);
+  }
+}

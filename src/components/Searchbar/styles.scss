@@ -1,0 +1,30 @@
+.search-wrapper {
+  position: relative;
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-bottom: 0.3rem;
+    transition: 0.5s;
+    &:hover {
+      cursor: pointer;
+      color: gray;
+    }
+  }
+  .searchbar {
+    width: 80%;
+    border: 0;
+    border-bottom: 2px solid black;
+    transition: border-color 100ms ease-in-out;
+    outline: none;
+    font-family: $text-font;
+    font-size: $font-md;
+    padding-bottom: 0.1rem;
+    padding-left: 1.25em;
+
+    &:focus {
+      border-color: gray;
+    }
+  }
+}

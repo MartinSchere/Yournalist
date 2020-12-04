@@ -1,0 +1,10 @@
+@import "./variables.scss";
+@import "./mixins.scss";
+
+@import "../components/styles.scss";
+
+@import "../components/Searchbar/styles.scss";
+@import "../components/NewsContainer/styles.scss";
+@import "../components/NewsContainer/NewsCard/styles.scss";
+
+@import "../components/Loader/styles.scss";

@@ -1,0 +1,29 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap");
+
+$title-font: "Playfair Display", serif;
+$text-font: "Padauk", sans-serif;
+
+$font-md: 1.5rem;
+$font-sm: 0.75rem;
+
+// Colors
+
+$background: rgb(255, 250, 240);
+$border: #707070;
+
+$text-muted: #303030;
+// Screens
+
+// Small tablets and large smartphones (landscape view)
+$screen-sm: 576px;
+
+// Small tablets (portrait view)
+$screen-md: 768px;
+
+// Tablets and small desktops
+$screen-lg: 992px;
+
+// Large tablets and desktops
+$screen-xl: 1200px;
