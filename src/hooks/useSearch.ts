@@ -25,17 +25,18 @@ const useSearch = (query: string | null, sources: string[]) => {
       newsapi
         .getEverything({
           q: query,
-          pageSize: 1,
-          sources: sources,
+          pageSize: 10,
+          sources,
         })
         .then((data) => {
           setResponse({ data, loading: false, error: null });
         })
         .catch((e) => {
+          console.error(e);
           setResponse({ data: null, loading: false, error: e });
         });
     }
-  }, [query, ...sources]);
+  }, [query, sources.join(",")]);
 
   return response;
 };

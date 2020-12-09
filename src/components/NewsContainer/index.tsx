@@ -4,22 +4,40 @@ import NewsCard from "./NewsCard";
 import { useSearchState } from "./../../hooks/useSearch";
 import Loader from "./../Loader/index";
 
+import { INewsApiArticle, INewsApiResponse } from "ts-newsapi/lib/types";
+import NewsColumn from "./NewsColumn";
+
 export interface NewsContainerProps {
   searchResults: useSearchState;
+}
+export interface ModifiedData {
+  source: string;
+  articles: INewsApiArticle[];
 }
 
 const NewsContainer: React.FunctionComponent<NewsContainerProps> = (props) => {
   const { loading, error, data } = props.searchResults;
+
+  const groupData = (d: INewsApiResponse): ModifiedData[] => {
+    const res = Array.from(
+      d.articles.reduce((a, { source, ...rest }) => {
+        return a.set(source.id, [rest].concat(a.get(source.id) || []));
+      }, new Map())
+    ).map(([source, articles]) => ({ source, articles }));
+
+    return res;
+  };
   return (
     <div className="news-container">
       {loading && <Loader />}
-      {/* {data &&
-        data!.articles.map((val, index) => (
-          <NewsCard
+      {data &&
+        groupData(data).map((data, index) => (
+          <NewsColumn
             key={index}
-            data={{ title: val.title, body: val.content, url: val.url }}
+            articles={data.articles}
+            source={data.source}
           />
-        ))} */}
+        ))}
       {error && (
         <div className="error">
           <h1>There was an error.</h1>

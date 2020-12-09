@@ -13,10 +13,24 @@ input {
 
 h1 {
   font-family: $title-font;
+
+  @include xs {
+    font-size: 1.25rem;
+  }
+  @include sm {
+    font-size: 1.5rem;
+  }
+  @include lg {
+    font-size: 1.75rem;
+  }
 }
 p {
   font-family: $text-font;
   font-weight: 300;
+
+  @include xs {
+    font-size: 0.75rem;
+  }
 }
 main {
   height: 90vh;
@@ -35,5 +49,8 @@ main {
     font-size: 2.75rem;
     font-weight: 600;
     margin-top: 0.5rem;
+  }
+  .top-search {
+    display: flex;
   }
 }

@@ -1,6 +1,6 @@
 .search-wrapper {
   position: relative;
-
+  flex: 0.8;
   .search-icon {
     position: absolute;
     top: 50%;
@@ -13,8 +13,8 @@
     }
   }
   .searchbar {
-    width: 80%;
     border: 0;
+    width: 100%;
     border-bottom: 2px solid black;
     transition: border-color 100ms ease-in-out;
     outline: none;

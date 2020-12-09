@@ -1,23 +1,16 @@
 import React from "react";
-
-import { Url } from "url";
-
-interface Data {
-  title: string | null;
-  body: string | null;
-  url: string | null;
-}
+import { INewsApiArticle } from "ts-newsapi/lib/types";
 
 export interface NewsCardProps {
-  data: Data;
+  data: INewsApiArticle;
 }
 
 const NewsCard: React.FunctionComponent<NewsCardProps> = ({ data }) => {
   return (
     <div className="news-card">
       <h1 className="card-title">{data.title}</h1>
-      <p className="card-body">{data.body}</p>
-      <a href="#">{data.url}</a>
+      <p className="card-body">{data.content}</p>
+      <a href={data.url}>See source</a>
     </div>
   );
 };

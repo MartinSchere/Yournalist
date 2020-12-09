@@ -26,3 +26,20 @@
     @content;
   }
 }
+
+@mixin hover-opacity {
+  opacity: 1;
+  transition: 0.2s;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
+
+@mixin hover-bg-darken {
+  transition: 0.2s;
+  &:hover {
+    background-color: $light-gray;
+    cursor: pointer;
+  }
+}

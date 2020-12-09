@@ -9,34 +9,37 @@ import {
 
 const newsapi = new NewsApi("f0e3f7baeace485a9146207160db77ff");
 
-const useSourceSearch = (category: INewsApiSourceParams["category"]) => {
-  const [response, setResponse] = useState<null | INewsApiSourcesResponse>(
-    null
-  );
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
+export interface useSearchState {
+  data: INewsApiSourcesResponse | null;
+  loading: boolean;
+  error: INewsApiSourcesResponse | null;
+}
+const useSourceSearch = (
+  category: INewsApiSourceParams["category"]
+): useSearchState => {
+  const [response, setResponse] = useState<useSearchState>({
+    data: null,
+    loading: false,
+    error: null,
+  });
   useEffect(() => {
-    newsapi
-      .getSources({
-        country: "us",
-        language: "en",
-        category: category,
-      })
-      .then((res) => {
-        setResponse(res);
-      })
-      .catch((e) => {
-        setError(e);
-      })
-      .finally(() => setLoading(false));
+    if (category) {
+      newsapi
+        .getSources({
+          country: "us",
+          language: "en",
+          category: category,
+        })
+        .then((data) => {
+          setResponse({ data, loading: false, error: null });
+        })
+        .catch((e) => {
+          setResponse({ data: null, loading: false, error: e });
+        });
+    }
   }, [category]);
 
-  return {
-    loading,
-    error,
-    data: response,
-  };
+  return response;
 };
 
 export default useSourceSearch;
