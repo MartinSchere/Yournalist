@@ -35,7 +35,8 @@ const SourceSelector: React.FunctionComponent<SourceSelectorProps> = ({
 
   useEffect(() => {
     onSourcesSelect(selectedSources);
-  }, [selectedSources.join(",")]);
+    console.log(selectedSources);
+  }, [JSON.stringify(selectedSources)]);
 
   return (
     <div className="source-selector">
@@ -51,16 +52,19 @@ const SourceSelector: React.FunctionComponent<SourceSelectorProps> = ({
           <div
             className="category-badge"
             key={idx}
-            onClick={() => setSelectedCategory(c)}
+            onClick={() => {
+              setSelectedCategory(c);
+              setSelectedSources([]);
+            }}
           >
             {c}
           </div>
         ))}
         {loading && <Loader />} {error && <h1>There was an error</h1>}
         {data &&
-          data.sources.map((source, idx) => (
+          data.sources.map((source) => (
             <Source
-              key={idx}
+              key={source.id}
               sourceId={source.id}
               sourceName={source.name}
               onSelect={(sourceId) => {

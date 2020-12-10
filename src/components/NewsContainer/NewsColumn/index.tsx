@@ -9,7 +9,8 @@ const NewsColumn: React.FunctionComponent<ModifiedData> = ({
 }) => {
   return (
     <div className="news-column">
-      <h1>{source}</h1>
+      <h1 className="source-name">{source}</h1>
+
       {articles.map((art, idx) => (
         <NewsCard key={idx} data={art} />
       ))}

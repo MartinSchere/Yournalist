@@ -40,7 +40,7 @@ const NewsContainer: React.FunctionComponent<NewsContainerProps> = (props) => {
         ))}
       {error && (
         <div className="error">
-          <h1>There was an error.</h1>
+          <h1>There was an error. We may have got rate-limited.</h1>
           <h5>Please try again later</h5>
         </div>
       )}

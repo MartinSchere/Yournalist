@@ -1,3 +1,12 @@
 .news-card {
   padding: 0.75em 1.75em;
+  @include xs {
+    padding: 0.125em 0.25em;
+  }
+  @include sm {
+    padding: 0.25em 0.33em;
+  }
+  @include md {
+    padding: 0.5em 0.75em;
+  }
 }

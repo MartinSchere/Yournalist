@@ -25,8 +25,9 @@ const useSearch = (query: string | null, sources: string[]) => {
       newsapi
         .getEverything({
           q: query,
-          pageSize: 10,
+          pageSize: 100,
           sources,
+          sortBy: "popularity",
         })
         .then((data) => {
           setResponse({ data, loading: false, error: null });
@@ -36,7 +37,7 @@ const useSearch = (query: string | null, sources: string[]) => {
           setResponse({ data: null, loading: false, error: e });
         });
     }
-  }, [query, sources.join(",")]);
+  }, [query, JSON.stringify(sources)]);
 
   return response;
 };
